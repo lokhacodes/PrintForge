@@ -1,4 +1,5 @@
 import "./globals.css";
+import NavLink from "@/app/components/NavLink"
 import Link from "next/link"
 import type { RootLayoutProps } from "@app/types"
 import { Albert_Sans, Montserrat_Alternates } from "next/font/google"
