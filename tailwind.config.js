@@ -12,5 +12,4 @@ module.exports = {
         "orange-accent": "#F77D36"
       }
     }
-  }
-}
+  }}

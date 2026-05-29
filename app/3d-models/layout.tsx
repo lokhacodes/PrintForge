@@ -5,7 +5,7 @@
  * component, and restructure the app if needed
  */
 
-import NavLink from "@/app/components/NavLink"
+
 import type { ReactNode } from "react"
 
 import CategoriesNav from "@/app/components/categoriesNav"
