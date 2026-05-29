@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { FaRegHeart } from "react-icons/fa6"
 import Pill from "@/app/components/Pill"
 import type { ModelDetailPageProps } from "@/app/types"
@@ -13,10 +14,12 @@ export default async function ModelDetailPage({ params }: ModelDetailPageProps) 
       <article className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         {/* Image Section */}
         <figure className="relative overflow-hidden rounded-lg shadow-lg aspect-square">
-          <img
-            src={placeholderImg.src}
+          <Image
+            src={placeholderImg}
             alt={`3D model of ${model.name}`}
-            className="absolute inset-0 object-cover w-full h-full"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
           />
         </figure>
 
@@ -35,13 +38,8 @@ export default async function ModelDetailPage({ params }: ModelDetailPageProps) 
           </div>
           <h1 className="mb-6 text-4xl font-bold">{model.name}</h1>
 
-          <Pill
-            className="mb-6 w-fit"
-            role="status"
-            aria-label="Category"
-          >
-            {model.category}
-          </Pill>
+          <Pill className="mb-6 w-fit">{model.category}</Pill>
+
 
           <div className="mb-6 prose prose-lg max-w-none">
             <p className="leading-relaxed text-gray-700">

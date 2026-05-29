@@ -1,23 +1,23 @@
-import { getAllCategories } from "../lib/categories";
-import {ReactNode} from "react"
-import Link from "next/link"
-export default async function ModelsLayout({children}:{children: ReactNode}){
-    const categories = getAllCategories()
-    console.log(categories)
-    return 
-    (
-        <div>
-            <nav>
-                <Link href="/3d-models">All</Link>
-                {categories.map( cat => (
-                    <Link
-                    href={`/3d-models/categories/${cat.slug}`}
-                    key={cat.slug}
-                    >{cat.displayName}
-                    </Link>
-                ))}
-            </nav>
-            {children}
-        </div>
-    )
+/**
+ * Challenge: Style the active categories links
+ * 
+ * Note: Be sure to think about what you're turning into a client
+ * component, and restructure the app if needed
+ */
+
+import NavLink from "@/app/components/NavLink"
+import type { ReactNode } from "react"
+
+import CategoriesNav from "@/app/components/categoriesNav"
+export default function ModelsLayout({ children }: { children: ReactNode }) {
+
+  return (
+    <div className="relative flex flex-col min-h-screen md:flex-row">
+      {/* Responsive Navigation */}
+    
+       <CategoriesNav />
+      {/* Main Content Area */}
+      <main className="flex-1 p-4 md:ml-64">{children}</main>
+    </div>
+  )
 }

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { FaRegHeart } from "react-icons/fa6"
 import Pill from "./Pill"
@@ -13,10 +14,12 @@ export default function ModelCard({ model }: ModelCardProps) {
         >
             <div className="overflow-hidden transition-shadow bg-white rounded-lg shadow-md hover:shadow-lg" role="article">
                 <div className="relative aspect-square">
-                    <img
-                        src={placeholderImg.src}
+                    <Image
+                        src={placeholderImg}
                         alt={model.name}
                         className="absolute inset-0 object-cover w-full h-full"
+                        fill
+                        sizes="100vw"
                     />
                 </div>
                 <div className="p-4">
