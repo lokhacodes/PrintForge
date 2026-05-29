@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import NavLink from "@/app/components/NavLink"
 import { usePathname } from "next/navigation"
@@ -14,15 +15,19 @@ export default function Navbar() {
         <Link href="/">
           <div className="relative cursor-pointer">
             {/* Desktop Logo */}
-            <img
+            <Image
               src={PFLogo.src}
               alt="PrintForge Logo"
+              width={200}
+              height={50}
               className="w-[200px] h-auto hidden md:block"
             />
             {/* Mobile Logo */}
-            <img
+            <Image
               src={PFLogoIcon.src}
               alt="PrintForge Logo"
+              width={40}
+              height={40}
               className="w-[40px] h-auto block md:hidden"
             />
           </div>

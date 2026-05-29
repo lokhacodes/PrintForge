@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import HeroImage from "@/public/hero-image.png"
 
@@ -26,7 +27,11 @@ Discover what&apos;s possible with 3D Printing
             </Link>
           </div>
         </div>
-        <img src={HeroImage.src} className="w-[350px] h-auto rounded-lg" alt="Hero Image" />
+        <Image
+          src={HeroImage}
+          alt="Hero Image"
+          className="w-[350px] h-auto rounded-lg"
+        />
       </section>
     </main>
   )

@@ -24,6 +24,7 @@ export default function CategoriesNav() {
                 <NavLink
                   href={`/3d-models/categories/${item.slug}`}
                   key={item.slug}
+                  isActive={pathname === `/3d-models/categories/${item.slug}`}
                 >
                   {item.displayName}
                 </NavLink>
