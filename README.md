@@ -13,6 +13,12 @@ PrintForge is a small Next.js app that displays a catalog of 3D models. Users ca
 - `/3d-models/[id]` – Single model details
 - `/about` – About page
 
+## Output
+
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+
 ## Active navigation coloring (the “orange link” behavior)
 The orange highlight for active links is controlled by the reusable component:
 
