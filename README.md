@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PrintForge (Next.js + Tailwind)
 
-## Getting Started
+## What this project does
+PrintForge is a small Next.js app that displays a catalog of 3D models. Users can browse:
+- **All 3D Models**
+- **Categories** under `/3d-models/categories/[categoryName]`
+- **Model details** under `/3d-models/[id]`
 
-First, run the development server:
+## Key routes
+- `/` – Home page
+- `/3d-models` – Models listing + search
+- `/3d-models/categories/[categoryName]` – Models filtered by category
+- `/3d-models/[id]` – Single model details
+- `/about` – About page
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Active navigation coloring (the “orange link” behavior)
+The orange highlight for active links is controlled by the reusable component:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `app/components/NavLink.tsx`
+  - It conditionally applies the Tailwind class `text-orange-accent` only when `isActive` is `true`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `app/components/Navbar.tsx`
+  - Currently sets `isActive` with strict equality:
+    - `pathname === "/3d-models"`
+  - This means the orange color works only on the exact route `/3d-models`.
+  - On nested routes like `/3d-models/categories/...` or `/3d-models/[id]`, `pathname` does **not** equal `"/3d-models"`, so `isActive` becomes `false` and the link falls back to `text-gray-700`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Fix / expected behavior
+For nav items that should stay active across sub-routes, `isActive` should use prefix matching, for example:
 
-## Learn More
+- `isActive={pathname === "/3d-models" || pathname.startsWith("/3d-models/")}`
 
-To learn more about Next.js, take a look at the following resources:
+A similar approach should be used for category links if the intent is to keep them highlighted while viewing nested pages.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Styling
+- Tailwind is configured in `tailwind.config.js`.
+- The custom brand color is defined as:
+  - `orange-accent: #F77D36`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Running the project
+From the `printforge/` directory:
+- `npm install`
+- `npm run dev`
 
-## Deploy on Vercel
+Then open the local dev server URL shown in the terminal.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
