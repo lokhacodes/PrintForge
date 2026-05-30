@@ -32,6 +32,10 @@ Discover what&apos;s possible with 3D Printing
           alt="Hero Image"
           className="w-[350px] h-auto rounded-lg"
         />
+
+
+
+        
       </section>
     </main>
   )
